@@ -29,7 +29,7 @@ def about():
 
 
 @app.route("/profile", methods=["GET", "POST"])
-def profile():
+def newProfile():
     
     form = ProfileForm()
     
@@ -60,6 +60,33 @@ def profile():
             flash("Profile Successfully Created", "success")
             return redirect(url_for("profile"))
 
+"""@app.route('/profile/<userid>', methods=['GET', 'POST'])
+def viewProfile(userid):
+    user = UserProfile.query.filter_by(userid=userid).first()
+    
+    if request.method == 'GET':
+        if user is not None:
+            return render_template("profile.html", user=user)
+        else:
+            flash('User Not Found', 'danger')
+            return redirect(url_for("home"))
+            
+    elif request.method == 'POST':
+        if user is not None:
+            response = make_response(jsonify(userid=user.userid, username=user.username, image=user.pic, gender=user.gender, age=user.age,
+                    profile_created_on=user.created_on))
+            response.headers['Content-Type'] = 'application/json'            
+            return response
+        else:
+            flash('User Not Found', 'danger')
+            return redirect(url_for("home"))"""
+
+@app.route('/profile/<userid>')
+def profile(userid):
+    user = UserProfile.query.filter_by(userid=userid).first()
+    return render_template('profile.html',userid=userid)
+            
+            
 @app.route('/profiles', methods=['GET', 'POST'])
 def profiles():
     user_list = UserProfile.query.all()
