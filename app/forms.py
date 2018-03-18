@@ -5,12 +5,12 @@ from flask_wtf.file import FileField, FileRequired, FileAllowed
 
 
 class ProfileForm(FlaskForm):
-    firstname = StringField('Username', validators=[InputRequired()])
-    lastname = StringField('Password', validators=[InputRequired()])
+    firstname = StringField('First Name', validators=[InputRequired()])
+    lastname = StringField('Last Name', validators=[InputRequired()])
     gender = SelectField(label='Gender', choices=[("Male", "Male"), ("Female", "Female")])
-    email = StringField('Password', validators=[InputRequired()])
-    location = StringField('Password', validators=[InputRequired()])
-    bio = StringField('Password', validators=[InputRequired()])
+    email = StringField('E-mail', validators=[InputRequired()])
+    location = StringField('Location', validators=[InputRequired()])
+    bio = TextAreaField('Biography', validators=[InputRequired()])
     photo= FileField('Photo', validators=[
         FileRequired(),
         FileAllowed(['jpg','png','Images Only!'])

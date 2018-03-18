@@ -63,7 +63,7 @@ def profile():
 @app.route('/profiles', methods=['GET', 'POST'])
 def profiles():
     user_list = UserProfile.query.all()
-    users = [{"username": user.username, "userid": user.userid} for user in user_list]
+    users = [{"First Name": user.first_name, "Last Name": user.last_name, "userid": user.userid} for user in user_list]
     
     if request.method == 'GET':
         if user_list is not None:
