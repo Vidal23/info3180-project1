@@ -58,7 +58,7 @@ def newProfile():
             db.session.commit()
             
             flash("Profile Successfully Created", "success")
-            return redirect(url_for("profile"))
+            return redirect(url_for("profiles"))
 
 """@app.route('/profile/<userid>', methods=['GET', 'POST'])
 def viewProfile(userid):
