@@ -84,7 +84,7 @@ def viewProfile(userid):
 @app.route('/profile/<userid>')
 def profile(userid):
     user = UserProfile.query.filter_by(userid=userid).first()
-    return render_template('profile.html',userid=userid)
+    return render_template('profile.html',user=user)
             
             
 @app.route('/profiles', methods=['GET', 'POST'])
